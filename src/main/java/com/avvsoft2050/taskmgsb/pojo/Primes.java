@@ -2,16 +2,16 @@ package com.avvsoft2050.taskmgsb.pojo;
 
 public class Primes {
 
-    private String content;
+    private StringBuilder content;
 
     public Primes() {
     }
 
-    public Primes(String content) {
+    public Primes(StringBuilder content) {
         this.content = content;
     }
 
-    public String getContent() {
+    public StringBuilder getContent() {
         return content;
     }
 
