@@ -9,8 +9,6 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
-import java.util.ArrayList;
-
 @Controller
 public class PrimesController {
 
@@ -25,20 +23,8 @@ public class PrimesController {
     @MessageMapping("/generate")
     @SendTo("/topic/primes")
     public Primes generatePrimes(PrimesCount primesCount) {
-        StringBuilder fiveSequences = new StringBuilder();
         int count = Integer.parseInt(HtmlUtils.htmlEscape(primesCount.getCount()));
-        for (int i = 0; i < 5; i++) {
-            ArrayList<Integer> primesList = primesGenerator
-                    .getFirstPrimes(count);
-            ArrayList<Integer> sixPrimes = randomSixGenerator.getSix(primesList);
-            String sixPrimesStr = sixPrimes.toString();
-            System.out.println("six: " + sixPrimesStr);
-            fiveSequences.append("Sequence #").append(i).append(" ").append(sixPrimes).append(" \n");
-
-        }
+        StringBuilder fiveSequences = randomSixGenerator.getSixFiveTimes(count);
         return new Primes(fiveSequences);
-
-
     }
-
 }

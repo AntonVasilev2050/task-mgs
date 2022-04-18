@@ -1,12 +1,16 @@
 package com.avvsoft2050.taskmgsb.servises;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 @Service
 public class RandomSixGenerator {
+    @Autowired
+    PrimesGenerator primesGenerator;
 
     public ArrayList<Integer> getSix(ArrayList<Integer> primesList) {
         int howManyGenerate = 6;
@@ -21,14 +25,14 @@ public class RandomSixGenerator {
         return sixPrimes;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println("start");
-//        RandomSixGenerator randomSixGenerator = new RandomSixGenerator();
-//        PrimesGenerator primesGenerator = new PrimesGeneratorImpl();
-//        ArrayList<Integer> primesList = primesGenerator.getFirstPrimes(100);
-//        ArrayList<Integer> sixPrimes = randomSixGenerator.getSix(primesList);
-//        System.out.println("generated");
-//        System.out.println(sixPrimes.toString());
-//        System.out.println("stop");
-//    }
+    public StringBuilder getSixFiveTimes(int count){
+        StringBuilder fiveSequences = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            ArrayList<Integer> primesList = primesGenerator
+                    .getFirstPrimes(count);
+            ArrayList<Integer> sixPrimes = getSix(primesList);
+            fiveSequences.append("Sequence #").append(i).append(" ").append(sixPrimes).append(System.lineSeparator());
+        }
+        return fiveSequences;
+    }
 }
