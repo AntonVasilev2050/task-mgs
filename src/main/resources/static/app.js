@@ -9,7 +9,7 @@ function setConnected(connected) {
     else {
         $("#conversation").hide();
     }
-    $("#greetings").html("");
+    $("#primes").html("");
 }
 
 function connect() {
@@ -18,7 +18,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (primes) {
+        stompClient.subscribe('/topic/primes', function (primes) {
             showPrimes(JSON.parse(primes.body).content);
         });
     });

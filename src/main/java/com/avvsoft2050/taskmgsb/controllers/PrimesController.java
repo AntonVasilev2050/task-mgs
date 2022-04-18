@@ -20,7 +20,7 @@ public class PrimesController {
     }
 
     @MessageMapping("/generate")
-    @SendTo("/topic/greetings")
+    @SendTo("/topic/primes")
     public Primes generatePrimes(PrimesCount primesCount) {
         ArrayList<Integer> primesList = primesGenerator
                 .getFirstPrimes(Integer.parseInt(HtmlUtils.htmlEscape(primesCount.getCount())));
