@@ -7,11 +7,19 @@ import org.springframework.web.util.HtmlUtils;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ *
+ */
 @Service
 public class RandomSixGenerator {
     @Autowired
     PrimesGenerator primesGenerator;
 
+    /**
+     *
+     * @param primesList list of primes
+     * @return return 6 random numbers from primesList
+     */
     public ArrayList<Integer> getSix(ArrayList<Integer> primesList) {
         int howManyGenerate = 6;
         ArrayList<Integer> sixPrimes = new ArrayList<>(howManyGenerate);
@@ -25,6 +33,11 @@ public class RandomSixGenerator {
         return sixPrimes;
     }
 
+    /**
+     *
+     * @param count quantity of primes in the base sequence
+     * @return return five sequences; six random numbers in each;
+     */
     public StringBuilder getSixFiveTimes(int count){
         StringBuilder fiveSequences = new StringBuilder();
         for (int i = 0; i < 5; i++) {

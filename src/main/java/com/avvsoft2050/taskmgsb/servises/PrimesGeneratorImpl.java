@@ -5,6 +5,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class generates primes
+ * @author obtained on the internet
+ * @version 1.0
+ *
+ */
 @Service
 public class PrimesGeneratorImpl implements PrimesGenerator{
 
